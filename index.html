@@ -170,9 +170,14 @@
     }
     .btn-ghost:hover { border-color: rgba(255,255,255,.3); color: var(--white); }
     .hero-stats {
-      display: flex; gap: 40px; flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 32px;
       margin-top: 64px; padding-top: 48px;
       border-top: 1px solid rgba(255,255,255,.07);
+    }
+    @media(min-width:600px) {
+      .hero-stats { grid-template-columns: repeat(4, auto); gap: 40px; }
     }
     .stat-item .num {
       font-family: 'DM Mono', monospace;
@@ -368,10 +373,10 @@
       max-width: 600px; margin: 0 auto;
       background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.1);
-      border-radius: 20px; padding: 48px 40px;
+      border-radius: 20px; padding: 8px;
       position: relative; z-index: 1;
+      overflow: hidden;
     }
-    @media(max-width:600px) { .form-card { padding: 32px 24px; } }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media(max-width:560px) { .form-row { grid-template-columns: 1fr; } }
     .form-group { margin-bottom: 18px; }
@@ -715,32 +720,24 @@
       <p class="section-sub">Book a 20-minute demo and we'll walk through exactly how the system handles your school's student lifecycle — no sales pressure, no commitment.</p>
     </div>
     <div class="form-card reveal">
-      <form action="#" method="POST">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="school">School Name</label>
-            <input type="text" id="school" name="school" placeholder="Springfield Driving Academy" required />
-          </div>
-          <div class="form-group">
-            <label for="contact">Contact Name</label>
-            <input type="text" id="contact" name="contact" placeholder="Jane Smith" required />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="jane@springfielddriving.com" required />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="(617) 555-0100" required />
-          </div>
-        </div>
-        <button type="submit" class="form-submit">📅 Schedule a Demo →</button>
-        <p class="privacy-note">
-          🔒 By submitting your information, you consent to receive SMS updates regarding demo scheduling, onboarding, and support. Message &amp; data rates may apply. Reply STOP at any time to opt out. We respect your privacy and will never share your information with third parties.
-        </p>
-      </form>
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/fEWUISoriQlF79qwaYwN"
+        style="width:100%;height:584px;border:none;border-radius:3px;display:block;"
+        id="inline-fEWUISoriQlF79qwaYwN"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="DriveReadyMA Demo Form"
+        data-height="584"
+        data-layout-iframe-id="inline-fEWUISoriQlF79qwaYwN"
+        data-form-id="fEWUISoriQlF79qwaYwN"
+        title="DriveReadyMA Demo Form"
+      ></iframe>
+      <script src="https://link.msgsndr.com/js/form_embed.js"></script>
     </div>
   </div>
 </section>
@@ -783,4 +780,3 @@
 </script>
 </body>
 </html>
-
