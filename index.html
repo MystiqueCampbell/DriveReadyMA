@@ -175,9 +175,10 @@
       gap: 28px 32px;
       margin-top: 64px; padding-top: 48px;
       border-top: 1px solid rgba(255,255,255,.07);
+      text-align: center;
     }
     @media(min-width:600px) {
-      .hero-stats { grid-template-columns: repeat(4, auto); gap: 40px; }
+      .hero-stats { grid-template-columns: repeat(4, 1fr); gap: 40px; }
     }
     .stat-item .num {
       font-family: 'DM Mono', monospace;
@@ -430,21 +431,29 @@
     /* ── RMV BADGE STRIP ── */
     .rmv-strip {
       background: var(--white); border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border); padding: 32px 24px;
+      border-bottom: 1px solid var(--border); padding: 24px 20px;
     }
     .rmv-inner {
       max-width: 1080px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: center;
-      gap: 48px; flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 12px;
+      justify-items: start;
+    }
+    @media(min-width:700px) {
+      .rmv-inner {
+        display: flex; align-items: center; justify-content: center;
+        gap: 40px; flex-wrap: wrap;
+      }
     }
     .rmv-badge {
-      display: flex; align-items: center; gap: 12px; color: #5a6e88;
-      font-size: .85rem; font-weight: 600;
+      display: flex; align-items: center; gap: 10px; color: #5a6e88;
+      font-size: .8rem; font-weight: 600;
     }
     .rmv-badge .badge-icon {
-      width: 40px; height: 40px; border-radius: 10px;
+      width: 36px; height: 36px; border-radius: 10px;
       background: var(--sky); display: flex; align-items: center;
-      justify-content: center; font-size: 1.1rem;
+      justify-content: center; font-size: 1rem; flex-shrink: 0;
     }
 
     /* ── SCROLL ANIMATION ── */
@@ -780,3 +789,4 @@
 </script>
 </body>
 </html>
+
