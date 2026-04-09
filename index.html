@@ -79,6 +79,7 @@
     .nav-logo {
       font-family: 'DM Serif Display', serif;
       font-size: 1.35rem; color: var(--white); letter-spacing: -.01em;
+      text-decoration: none;
     }
     .nav-logo span { color: var(--blue); }
     .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -360,13 +361,17 @@
 
     /* ── CONTACT ── */
     #contact {
-      background: linear-gradient(135deg, var(--navy) 0%, #0e1f3d 100%);
+      background: var(--navy);
       position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(26,110,245,.12) 0%, transparent 65%);
     }
     #contact::after {
       content: ''; position: absolute; bottom: -80px; right: -80px;
       width: 360px; height: 360px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(26,110,245,.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(26,110,245,.1) 0%, transparent 70%);
     }
     #contact .section-title { color: var(--white); }
     #contact .section-sub  { color: var(--muted); }
@@ -437,8 +442,8 @@
       max-width: 1080px; margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px 12px;
-      justify-items: start;
+      gap: 20px 12px;
+      justify-items: center;
     }
     @media(min-width:700px) {
       .rmv-inner {
@@ -447,13 +452,26 @@
       }
     }
     .rmv-badge {
-      display: flex; align-items: center; gap: 10px; color: #5a6e88;
-      font-size: .8rem; font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      color: #5a6e88;
+      font-size: .78rem; font-weight: 600;
+    }
+    @media(min-width:700px) {
+      .rmv-badge {
+        flex-direction: row;
+        text-align: left;
+        gap: 10px;
+        font-size: .85rem;
+      }
     }
     .rmv-badge .badge-icon {
-      width: 36px; height: 36px; border-radius: 10px;
+      width: 40px; height: 40px; border-radius: 10px;
       background: var(--sky); display: flex; align-items: center;
-      justify-content: center; font-size: 1rem; flex-shrink: 0;
+      justify-content: center; font-size: 1.1rem; flex-shrink: 0;
     }
 
     /* ── SCROLL ANIMATION ── */
@@ -469,7 +487,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <div class="nav-logo">DriveReady<span>MA</span></div>
+    <a href="#" class="nav-logo">DriveReady<span>MA</span></a>
     <ul class="nav-links">
       <li><a href="#about">What We Do</a></li>
       <li><a href="#pain">Problems</a></li>
@@ -542,7 +560,6 @@
 <div class="rmv-strip reveal">
   <div class="rmv-inner">
     <div class="rmv-badge"><div class="badge-icon">🏛️</div> Massachusetts RMV-Aligned</div>
-    <div class="rmv-badge"><div class="badge-icon">⚠️</div> Student Attention Alerts</div>
     <div class="rmv-badge"><div class="badge-icon">🤖</div> Fully Automated Workflows</div>
     <div class="rmv-badge"><div class="badge-icon">📱</div> Student SMS Self-Service</div>
     <div class="rmv-badge"><div class="badge-icon">📊</div> Centralized Dashboard</div>
@@ -583,7 +600,7 @@
             <div class="tl"><span class="prompt">›</span><span class="cmd">New lead: Maria S. — drivereadyma.com/signup</span></div>
             <div class="tl success"><span class="prompt">✓</span><span class="out">Record created. Welcome SMS sent.</span></div>
             <div class="tl"><span class="prompt">›</span><span class="cmd">Lesson booked: Mon 10am — Springfield</span></div>
-            <div class="tl success"><span class="prompt">✓</span><span class="out">Confirmation + calendar invite delivered.</span></div>
+            <div class="tl success"><span class="prompt">✓</span><span class="out">Confirmation delivered to student.</span></div>
             <div class="tl warn"><span class="prompt">!</span><span class="out">24hr reminder sent to Maria S.</span></div>
             <div class="tl"><span class="prompt">›</span><span class="cmd">INBOUND SMS: "STATUS"</span></div>
             <div class="tl success"><span class="prompt">✓</span><span class="out">Auto-reply sent to Maria Santos:</span></div>
@@ -592,7 +609,6 @@
             <div class="tl success"><span class="prompt"> </span><span class="out">· Observation Hours: 4 / 6</span></div>
             <div class="tl success"><span class="prompt"> </span><span class="out">· Driving Hours: 7 / 12</span></div>
             <div class="tl success"><span class="prompt"> </span><span class="out">· Parent Class Completed: No</span></div>
-            <div class="tl"><span class="prompt">›</span><span class="cmd">RMV log updated — permit hours verified.</span></div>
             <div class="tl warn"><span class="prompt">!</span><span class="out">Lead: Devon R. — missed call. Text-back sent.</span></div>
             <div class="tl success"><span class="prompt">✓</span><span class="out">Auto-reply: "Hi Devon! This is DriveReadyMA.</span></div>
             <div class="tl success"><span class="prompt"> </span><span class="out">We just missed your call — reply SCHEDULE</span></div>
@@ -657,9 +673,9 @@
         <p>Every repetitive task — data entry, reminder calls, scheduling confirmations, RMV log updates — runs automatically. Your team's time returns to instruction and student relationships.</p>
       </div>
       <div class="benefit-card reveal">
-        <span class="benefit-num">02 / Revenue</span>
-        <h3>Higher Attendance, Lower No-Show Rates</h3>
-        <p>Automated SMS reminders sent 24 hours and 2 hours before each lesson significantly reduce missed appointments, protecting your lesson revenue without any manual follow-up.</p>
+        <span class="benefit-num">02 / Revenue & Payments</span>
+        <h3>Higher Attendance, More Revenue — Collected Automatically</h3>
+        <p>SMS reminders before every lesson slash no-shows and protect your revenue. When students near graduation, automated invoices and secure pay links go out via SMS — your school gets paid on time, automatically.</p>
       </div>
       <div class="benefit-card reveal">
         <span class="benefit-num">03 / Compliance</span>
@@ -675,11 +691,6 @@
         <span class="benefit-num">05 / Visibility</span>
         <h3>Centralized Dashboard for Total Oversight</h3>
         <p>One real-time view of every student's status, lesson history, compliance record, and upcoming schedule. Owner-level insight without digging through filing cabinets or spreadsheets.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <span class="benefit-num">06 / Payments</span>
-        <h3>Get Paid Automatically — No Chasing Required</h3>
-        <p>Payment collection runs on autopilot. Students receive automated invoices, payment reminders, and secure pay links via SMS — so your school collects revenue on time without a single follow-up call from your staff.</p>
       </div>
     </div>
   </div>
@@ -707,7 +718,7 @@
       <div class="step">
         <div class="step-num">3</div>
         <h3>Watch It Run</h3>
-        <p>Students text keywords, book lessons, and get reminders automatically. Your dashboard stays current. RMV records stay accurate. Your staff goes home on time — and your school runs itself.</p>
+        <p>Students text keywords, book lessons, and get reminders automatically. Payments are collected via SMS — no chasing, no invoicing by hand. Your dashboard stays current. RMV records stay accurate. Your staff goes home on time — and your school runs itself.</p>
       </div>
     </div>
     <div class="reveal" style="margin-top:56px; background:var(--sky); border-radius:16px; padding:32px 40px; display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
@@ -763,7 +774,7 @@
     <a href="#contact">Book a Demo</a>
   </div>
   <p style="margin-top:24px; font-size:.74rem;">
-    © 2025 DriveReadyMA. All rights reserved. Massachusetts RMV compliance tools are provided for operational efficiency and do not constitute legal compliance advice.
+    © 2026 DriveReadyMA. All rights reserved. Massachusetts RMV compliance tools are provided for operational efficiency and do not constitute legal compliance advice.
   </p>
 </footer>
 
@@ -789,4 +800,3 @@
 </script>
 </body>
 </html>
-
