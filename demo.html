@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Demo – DriveReadyMA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:    #0b1728;
+      --blue:    #1a6ef5;
+      --blue-lt: #3d8aff;
+      --green:   #22c55e;
+      --white:   #ffffff;
+      --offwhite:#f7f8fc;
+      --muted:   #8899b4;
+      --sky:     #e8f0fe;
+      --border:  rgba(26,110,245,.15);
+      --radius:  14px;
+      --shadow:  0 8px 40px rgba(11,23,40,.15);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Sora', sans-serif;
+      background: linear-gradient(135deg, #020b18 0%, #041124 40%, #071e3d 70%, #0a1a35 100%);
+      min-height: 100vh;
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+```
+@keyframes pulse-ring {
+  0%   { transform: scale(.95); box-shadow: 0 0 0 0 rgba(26,110,245,.4); }
+  70%  { transform: scale(1);   box-shadow: 0 0 0 14px rgba(26,110,245,0); }
+  100% { transform: scale(.95); box-shadow: 0 0 0 0 rgba(26,110,245,0); }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── BG DECORATION ── */
+.bg-grid {
+  position: fixed; inset: 0; opacity: .03; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(var(--blue) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blue) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.bg-blob {
+  position: fixed; width: 700px; height: 700px; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle, rgba(26,110,245,.15) 0%, transparent 65%);
+  top: -200px; right: -200px;
+  animation: float 7s ease-in-out infinite;
+}
+.bg-blob2 {
+  position: fixed; width: 400px; height: 400px; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle, rgba(26,110,245,.08) 0%, transparent 70%);
+  bottom: -100px; left: -100px;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(11,23,40,.92);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.35rem; color: var(--white); letter-spacing: -.01em;
+  text-decoration: none;
+}
+.nav-logo span { color: var(--blue); }
+.nav-back {
+  font-size: .84rem; font-weight: 600; color: var(--muted);
+  text-decoration: none; display: flex; align-items: center; gap: 6px;
+  transition: color .2s;
+}
+.nav-back:hover { color: var(--white); }
+
+/* ── MAIN LAYOUT ── */
+.page-wrap {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 64px;
+}
+@media(max-width: 860px) {
+  .page-wrap { grid-template-columns: 1fr; }
+  .left-panel { padding: 56px 28px 0; }
+  .right-panel { padding: 40px 28px 60px; }
+}
+
+/* ── LEFT PANEL ── */
+.left-panel {
+  padding: 72px 56px 72px 48px;
+  display: flex; flex-direction: column; justify-content: center;
+  animation: fadeUp .7s ease both;
+}
+.demo-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(26,110,245,.15); border: 1px solid rgba(26,110,245,.35);
+  color: var(--blue-lt); border-radius: 100px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 6px 16px; margin-bottom: 28px; align-self: flex-start;
+}
+.demo-badge::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green); animation: pulse-ring 2s infinite;
+  flex-shrink: 0;
+}
+.left-panel h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  line-height: 1.2; letter-spacing: -.02em;
+  color: var(--white); margin-bottom: 20px;
+}
+.left-panel h1 em {
+  font-style: italic; color: var(--blue-lt);
+}
+.left-panel .sub {
+  font-size: .97rem; color: var(--muted); line-height: 1.8;
+  margin-bottom: 40px; max-width: 420px;
+}
+
+/* ── TRUST ITEMS ── */
+.trust-list {
+  list-style: none; display: flex; flex-direction: column; gap: 16px;
+  margin-bottom: 44px;
+}
+.trust-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: .9rem; color: rgba(255,255,255,.8); line-height: 1.55;
+}
+.trust-icon {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: rgba(26,110,245,.18); border: 1px solid rgba(26,110,245,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .88rem; flex-shrink: 0; margin-top: 1px;
+}
+
+/* ── STATS ROW ── */
+.stat-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.stat-box { text-align: center; }
+.stat-box .num {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.6rem; font-weight: 500; color: var(--white); display: block;
+}
+.stat-box .lbl {
+  font-size: .72rem; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .06em; line-height: 1.4;
+}
+
+/* ── RIGHT PANEL (FORM) ── */
+.right-panel {
+  padding: 72px 48px 72px 40px;
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeUp .7s ease .15s both;
+}
+.form-wrap {
+  width: 100%; max-width: 520px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px; padding: 36px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 80px rgba(0,0,0,.3);
+}
+.form-header { margin-bottom: 28px; }
+.form-header h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.45rem; color: var(--white);
+  margin-bottom: 6px; letter-spacing: -.01em;
+}
+.form-header p { font-size: .84rem; color: var(--muted); line-height: 1.6; }
+
+.form-divider {
+  height: 1px; background: rgba(255,255,255,.07); margin-bottom: 24px;
+}
+
+/* iframe container */
+.iframe-wrap {
+  width: 100%;
+}
+.iframe-wrap iframe {
+  width: 100%;
+  height: 632px;
+  border: none;
+  border-radius: 4px;
+  display: block;
+}
+
+.form-footer {
+  margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  font-size: .75rem; color: var(--muted); text-align: center; line-height: 1.65;
+}
+.form-footer a { color: var(--blue-lt); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1;
+  background: rgba(7,17,31,.8);
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding: 24px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem; color: var(--white); margin-bottom: 6px;
+}
+.footer-logo span { color: var(--blue); }
+footer p { font-size: .75rem; color: var(--muted); }
+.footer-links { display: flex; gap: 20px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+.footer-links a { font-size: .75rem; color: var(--muted); transition: color .2s; }
+.footer-links a:hover { color: var(--white); }
+```
+
+  </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-blob"></div>
+<div class="bg-blob2"></div>
+
+<!-- NAV -->
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">DriveReady<span>MA</span></a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+
+<div class="page-wrap">
+
+  <!-- LEFT: VALUE PROP -->
+
+  <div class="left-panel">
+    <div class="demo-badge">Free · No Commitment · 20 Minutes</div>
+    <h1>See Your School<br/><em>Run Itself</em> in 20 Minutes</h1>
+    <p class="sub">
+      We'll walk you through a live demo of the full DriveReadyMA system — from student onboarding to RMV compliance tracking — configured for a Massachusetts driving school just like yours.
+    </p>
+
+```
+<ul class="trust-list">
+  <li>
+    <div class="trust-icon">📋</div>
+    Watch a student go from new lead to fully onboarded with zero staff involvement
+  </li>
+  <li>
+    <div class="trust-icon">📱</div>
+    See the live SMS self-service flow — STATUS and SCHEDULE in real time
+  </li>
+  <li>
+    <div class="trust-icon">🏛️</div>
+    Understand exactly how RMV compliance is tracked and surfaced automatically
+  </li>
+  <li>
+    <div class="trust-icon">💬</div>
+    Ask any question — we tailor the demo to your school's current pain points
+  </li>
+  <li>
+    <div class="trust-icon">📅</div>
+    Walk away with a clear picture of setup timeline and what's included
+  </li>
+</ul>
+
+<div class="stat-row">
+  <div class="stat-box">
+    <span class="num">100%</span>
+    <span class="lbl">RMV Compliance Tracking</span>
+  </div>
+  <div class="stat-box">
+    <span class="num">↓80%</span>
+    <span class="lbl">Reduction in No-Shows</span>
+  </div>
+  <div class="stat-box">
+    <span class="num">0 hrs</span>
+    <span class="lbl">Manual Data Entry</span>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- RIGHT: FORM -->
+
+  <div class="right-panel">
+    <div class="form-wrap">
+      <div class="form-header">
+        <h2>Book Your Free Demo</h2>
+        <p>Fill out the form and we'll reach out within 1 business day to confirm your time.</p>
+      </div>
+      <div class="form-divider"></div>
+      <div class="iframe-wrap">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/fEWUISoriQlF79qwaYwN"
+          id="inline-fEWUISoriQlF79qwaYwN"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="DriveReadyMA Demo Form"
+          data-height="632"
+          data-layout-iframe-id="inline-fEWUISoriQlF79qwaYwN"
+          data-form-id="fEWUISoriQlF79qwaYwN"
+          title="DriveReadyMA Demo Form"
+        ></iframe>
+        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+      </div>
+      <div class="form-footer">
+        Your information is never sold or shared. By submitting you agree to our
+        <a href="https://www.drivereadyma.com/privacy.html">Privacy Policy</a> and
+        <a href="https://www.drivereadyma.com/terms.html">Terms & Conditions</a>.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="footer-logo">DriveReady<span>MA</span></div>
+  <p>Full student lifecycle automation for Massachusetts driving schools.</p>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="https://www.drivereadyma.com/privacy.html">Privacy Policy</a>
+    <a href="https://www.drivereadyma.com/terms.html">Terms & Conditions</a>
+  </div>
+  <p style="margin-top:14px; font-size:.72rem;">
+    © 2026 Mystique Campbell DBA DriveReadyMA. All rights reserved. Norwood, MA.
+  </p>
+</footer>
+
+<!-- LeadConnector Chat Widget -->
+
+<script src="https://widgets.leadconnectorhq.com/loader.js"
+  data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+  data-widget-id="69d57d233ebfc2532ad84c2a">
+</script>
+
+</body>
+</html>
