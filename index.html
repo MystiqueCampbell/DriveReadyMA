@@ -374,6 +374,7 @@ nav {
   content: ''; position: absolute; bottom: -80px; right: -80px;
   width: 360px; height: 360px; border-radius: 50%;
   background: radial-gradient(circle, rgba(26,110,245,.1) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
 }
 #contact .section-title { color: var(--white); }
 #contact .section-sub  { color: var(--muted); }
@@ -751,7 +752,7 @@ footer p { font-size: .8rem; color: var(--muted); }
       <h2 class="section-title">See DriveReadyMA Live.</h2>
       <p class="section-sub">Book a 20-minute demo and we'll walk through exactly how the system handles your school's student lifecycle — no sales pressure, no commitment.</p>
     </div>
-    <div class="reveal" style="text-align:center;">
+    <div class="reveal" style="text-align:center; position:relative; z-index:2;">
       <a href="demo.html" class="btn-primary" style="font-size:1.1rem; padding:20px 48px; display:inline-block; text-decoration:none;">
         📅 Book Your Free Demo
       </a>
